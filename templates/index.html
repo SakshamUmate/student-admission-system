@@ -1,0 +1,39 @@
+<!-- templates/index.html -->
+{% extends "base.html" %}
+
+{% block title %}Home - Student Admission System{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-8 mx-auto">
+        <div class="jumbotron bg-primary text-white p-5 rounded mb-5">
+            <h1 class="display-4">Welcome to Student Admission System</h1>
+            <p class="lead">Apply for admission to our prestigious university programs with ease.</p>
+            <hr class="my-4">
+            <p>Submit your application online and track your admission status in real-time.</p>
+            <a class="btn btn-light btn-lg" href="{{ url_for('apply') }}" role="button">Apply Now</a>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Submit Application</h5>
+                        <p class="card-text">Fill out our comprehensive application form with your academic details and upload required documents.</p>
+                        <a href="{{ url_for('apply') }}" class="btn btn-primary">Apply Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Check Status</h5>
+                        <p class="card-text">Track your application status and download your admission letter once approved.</p>
+                        <a href="{{ url_for('application_status') }}" class="btn btn-success">Check Status</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

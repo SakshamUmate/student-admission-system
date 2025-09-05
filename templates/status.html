@@ -1,0 +1,28 @@
+<!-- templates/status.html -->
+{% extends "base.html" %}
+
+{% block title %}Check Status - Student Admission System{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-6 mx-auto">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="mb-0">Check Application Status</h3>
+            </div>
+            <div class="card-body">
+                <form method="POST" action="{{ url_for('check_status') }}">
+                    <div class="mb-3">
+                        <label for="application_id" class="form-label">Application ID</label>
+                        <input type="text" class="form-control" id="application_id" name="application_id" 
+                               placeholder="Enter your Application ID" required>
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary">Check Status</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

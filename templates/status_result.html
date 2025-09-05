@@ -1,0 +1,61 @@
+
+<!-- templates/status_result.html -->
+{% extends "base.html" %}
+
+{% block title %}Application Status - Student Admission System{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-8 mx-auto">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="mb-0">Application Status</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p><strong>Application ID:</strong> {{ student.application_id }}</p>
+                        <p><strong>Name:</strong> {{ student.first_name }} {{ student.last_name }}</p>
+                        <p><strong>Email:</strong> {{ student.email }}</p>
+                        <p><strong>Course Applied:</strong> {{ student.course_applied.replace('_', ' ').title() }}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><strong>Application Date:</strong> {{ student.application_date.strftime('%B %d, %Y') }}</p>
+                        <p><strong>Status:</strong> 
+                            <span class="badge 
+                                {% if student.status == 'approved' %}bg-success
+                                {% elif student.status == 'rejected' %}bg-danger
+                                {% else %}bg-warning{% endif %}">
+                                {{ student.status.title() }}
+                            </span>
+                        </p>
+                        {% if student.review_date %}
+                            <p><strong>Review Date:</strong> {{ student.review_date.strftime('%B %d, %Y') }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+                
+                {% if student.admin_comments %}
+                    <div class="mt-3">
+                        <h5>Admin Comments:</h5>
+                        <div class="alert alert-info">{{ student.admin_comments }}</div>
+                    </div>
+                {% endif %}
+                
+                {% if student.status == 'approved' and student.admission_letter_path %}
+                    <div class="mt-4 text-center">
+                        <a href="{{ url_for('download_letter', application_id=student.application_id) }}" 
+                           class="btn btn-success btn-lg">
+                            <i class="fas fa-download"></i> Download Admission Letter
+                        </a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        
+        <div class="text-center mt-3">
+            <a href="{{ url_for('application_status') }}" class="btn btn-secondary">Check Another Application</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

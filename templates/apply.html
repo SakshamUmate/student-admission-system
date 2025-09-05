@@ -1,0 +1,121 @@
+
+<!-- templates/apply.html -->
+{% extends "base.html" %}
+
+{% block title %}Apply - Student Admission System{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-8 mx-auto">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="mb-0">Student Application Form</h3>
+            </div>
+            <div class="card-body">
+                <form method="POST" enctype="multipart/form-data">
+                    {{ form.hidden_tag() }}
+                    
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            {{ form.first_name.label(class="form-label") }}
+                            {{ form.first_name(class="form-control") }}
+                            {% if form.first_name.errors %}
+                                <div class="text-danger">{{ form.first_name.errors[0] }}</div>
+                            {% endif %}
+                        </div>
+                        <div class="col-md-6">
+                            {{ form.last_name.label(class="form-label") }}
+                            {{ form.last_name(class="form-control") }}
+                            {% if form.last_name.errors %}
+                                <div class="text-danger">{{ form.last_name.errors[0] }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            {{ form.email.label(class="form-label") }}
+                            {{ form.email(class="form-control") }}
+                            {% if form.email.errors %}
+                                <div class="text-danger">{{ form.email.errors[0] }}</div>
+                            {% endif %}
+                        </div>
+                        <div class="col-md-6">
+                            {{ form.phone.label(class="form-label") }}
+                            {{ form.phone(class="form-control") }}
+                            {% if form.phone.errors %}
+                                <div class="text-danger">{{ form.phone.errors[0] }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        {{ form.address.label(class="form-label") }}
+                        {{ form.address(class="form-control", rows="3") }}
+                        {% if form.address.errors %}
+                            <div class="text-danger">{{ form.address.errors[0] }}</div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            {{ form.date_of_birth.label(class="form-label") }}
+                            {{ form.date_of_birth(class="form-control", type="date") }}
+                            {% if form.date_of_birth.errors %}
+                                <div class="text-danger">{{ form.date_of_birth.errors[0] }}</div>
+                            {% endif %}
+                        </div>
+                        <div class="col-md-6">
+                            {{ form.course_applied.label(class="form-label") }}
+                            {{ form.course_applied(class="form-select") }}
+                            {% if form.course_applied.errors %}
+                                <div class="text-danger">{{ form.course_applied.errors[0] }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            {{ form.previous_qualification.label(class="form-label") }}
+                            {{ form.previous_qualification(class="form-control") }}
+                            {% if form.previous_qualification.errors %}
+                                <div class="text-danger">{{ form.previous_qualification.errors[0] }}</div>
+                            {% endif %}
+                        </div>
+                        <div class="col-md-6">
+                            {{ form.cgpa.label(class="form-label") }}
+                            {{ form.cgpa(class="form-control") }}
+                            {% if form.cgpa.errors %}
+                                <div class="text-danger">{{ form.cgpa.errors[0] }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            {{ form.degree_certificate.label(class="form-label") }}
+                            {{ form.degree_certificate(class="form-control") }}
+                            <div class="form-text">Upload your degree certificate (PDF, JPG, PNG only)</div>
+                            {% if form.degree_certificate.errors %}
+                                <div class="text-danger">{{ form.degree_certificate.errors[0] }}</div>
+                            {% endif %}
+                        </div>
+                        <div class="col-md-6">
+                            {{ form.id_proof.label(class="form-label") }}
+                            {{ form.id_proof(class="form-control") }}
+                            <div class="form-text">Upload your ID proof (PDF, JPG, PNG only)</div>
+                            {% if form.id_proof.errors %}
+                                <div class="text-danger">{{ form.id_proof.errors[0] }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <div class="d-grid">
+                        {{ form.submit(class="btn btn-primary btn-lg") }}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
