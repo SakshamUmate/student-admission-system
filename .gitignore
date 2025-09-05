@@ -1,1 +1,28 @@
-.env
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+.env/
+venv/
+.venv/
+
+# Flask
+instance/
+.webassets-cache
+
+# SQLite database
+*.db
+
+# Uploaded files
+static/uploads/*
+static/admission_letters/*
+!static/uploads/.gitkeep
+!static/admission_letters/.gitkeep
+
+# IDE
+.vscode/
+.idea/
